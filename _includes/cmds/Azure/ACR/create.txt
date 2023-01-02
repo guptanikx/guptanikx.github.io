@@ -1,0 +1,6 @@
+{% capture string_with_newlines %}
+    {% if include.type == "create" %}
+        az acr create -g lab204 -n {{ include.name }} --admin-enabled true --sku Basic 
+    {% endif %}
+{% endcapture %}
+    {{- string_with_newlines | strip | strip_newlines -}}

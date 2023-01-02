@@ -1,0 +1,95 @@
+---
+layout: toc
+title: Azure - Exam AZ-204
+---
+
+- # [Develop Azure compute solutions (25-30%)]()
+  - Implement IaaS solutions
+    - [Provision virtual machines (VMs)]()
+    - Configure, validate, and deploy ARM templates
+    - Configure container images for solutions
+    - Publish an image to Azure Container Registry
+      - [Build and Push Image](/docs/Azure/Compute/ACR/publish-image){: .blank }
+    - Run containers by using Azure Container Instance
+      - [Deploy and Manage Secrets](QnA#container-app-1){: .blank }
+  - Create Azure App Service Web Apps
+    - Create an Azure App Service Web App
+      - [Create Linux container app](/docs/Azure/Compute/App-Service/linux-container-app){: .blank }
+    - Enable diagnostics logging
+      - [Docker Container Logging](QnA#app-svc-diag-1){: .blank }
+    - Deploy code to a web app
+      - [Deploy using Azure CLI](/docs/Azure/Compute/App-Service/cmds.html#deploy-webapp){: .blank }
+      - [Deploy Static Website](/docs/Azure/Compute/App-Service/cmds.html#deploy-static){: .blank }
+      - [Deploy using Git Repo](QnA#app-svc-deploy-1){: .blank }
+      - [Deploy using Git Repo while creating App](/docs/Azure/Compute/App-Service/cmds.html#deploy-webapp){: .blank }
+    - Configure web app settings including SSL, API settings, and strings
+    - Implement autoscaling rules including scheduled autoscaling and by operational or system metrics
+      - [Singleton Webapps with Shared Service Plan](QnA#func-app-scaling-1){: .blank }
+  - Implement Azure Functions
+    - Create and deploy Azure Functions apps
+    - Implement input and output bindings for a function
+    - Implement function triggers by using data operations, timers, and webhooks
+    - Implement Azure Durable Functions
+- # [Develop for Azure storage (15-20%)]()
+   - Develop solutions that use Azure Cosmos DB storage
+     - Select the appropriate API and SDK for a solution
+     - Implement partitioning schemes and partition keys
+     - Perform operations on data and Cosmos DB containers
+       - [Cosmos DB Pre Trigger](QnA#cosmos-trigger-1){: .blank }
+     - Set the appropriate consistency level for operations
+     - Manage change feed notifications
+   - Develop solutions that use blob storage
+     - Move items in Blob storage between storage accounts or containers
+     - Set and retrieve properties and metadata
+     - Perform operations on data by using the appropriate SDK
+     - Implement storage policies, data archiving, and retention
+       - [Blob Soft Delete](QnA#soft-delete){: .blank }
+- # [Implement Azure security (20-25%)]()
+   - Implement user authentication and authorization
+     - Authenticate and authorize users by using the Microsoft Identity platform
+       - [Add Identity Provider to WebApp](QnA#app-svc-auth-1){: .blank }
+     - Authenticate and authorize users and apps by using Azure Active Directory
+       - [Add AzureAD Authentication using AppRegistration for WebApp](/docs/Azure/Security/AzureAD/auth-webapp){: .blank}
+     - Create and implement shared access signatures
+     - Implement solutions that interact with Microsoft Graph
+   - Implement secure cloud solutions
+     - Secure app configuration data by using App Configuration or Azure Key Vault
+     - Develop code that uses keys, secrets, and certificates stored in Azure Key Vault
+     - Implement Managed Identities for Azure resources
+- # [Monitor, troubleshoot, and optimize Azure solutions (15-20%)]()
+  - Implement caching for solutions
+    - Configure cache and expiration policies for Azure Cache for Redis
+    - Implement secure and optimized application cache patterns including data sizing, connections,encryption, and expiration
+  - Troubleshoot solutions by using metrics and log data
+    - Configure an app or service to use Application Insights
+    - Review and analyze metrics and log data
+    - Implement Application Insights web tests and alerts
+      - [Understand and Implement Availability Test](QnA#app-svc-monitor-1)
+- # [Connect to and consume Azure services and third-party services (15-20%)]()
+  - Implement API Management
+    - Create an APIM instance
+    - Create and document APIs
+    - Configure authentication for APIs
+    - Define policies for APIs
+  - Develop event-based solutions
+    - Implement solutions that use Azure Event Grid
+    - Implement solutions that use Azure Event Hub
+      - [Event Hub Partition](QnA#eh-partition){: .blank } 
+  - Develop message-based solutions
+    - Implement solutions that use Azure Service Bus
+    - Implement solutions that use Azure Queue Storage queues
+
+---
+<!-- - # [Develop Azure compute solutions (25-30%)](#l1toc){: #l1content}
+  - Implement IaaS solutions
+    - [Provision virtual machines (VMs)](#l11toc){: #l11content}
+      - This is First
+      - This is Second
+
+- # [Develop for Azure storage (15-20%)](#l2toc){: #l2content}
+  - Develop solutions that use blob storage
+    - [Blob Soft Delete](QnA#soft-delete){: .blank }
+- # [Connect to and consume Azure services and third-party services (15-20%)](#l5toc){: #l5content}
+  - Develop event-based solutions
+    - Implement solutions that use Azure Event Hub
+      -  -->

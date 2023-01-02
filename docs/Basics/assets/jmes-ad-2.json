@@ -1,0 +1,13 @@
+{
+    "ops": {
+        "functionA": {
+            "numArgs": 2
+        },
+        "functionB": {
+            "numArgs": 3
+        },
+        "functionC": {
+            "variadic": true
+        }
+    }
+}

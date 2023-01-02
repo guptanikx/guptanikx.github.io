@@ -1,0 +1,24 @@
+
+Group
+    az cosmosdb sql : Manage SQL resources of Azure Cosmos DB account.
+
+Subgroups:
+    container                   : Manage Azure Cosmos DB SQL containers.
+    database                    : Manage Azure Cosmos DB SQL databases.
+    restorable-container        : Manage different versions of sql containers that are restorable in
+                                  a database of a Azure Cosmos DB account.
+    restorable-database         : Manage different versions of sql databases that are restorable in
+                                  a Azure Cosmos DB account.
+    restorable-resource         : Manage the databases and its containers that can be restored in
+                                  the given account at the given timesamp and region.
+    role                        : Manage Azure Cosmos DB SQL role resources.
+    stored-procedure            : Manage Azure Cosmos DB SQL stored procedures.
+    trigger                     : Manage Azure Cosmos DB SQL triggers.
+    user-defined-function       : Manage Azure Cosmos DB SQL user defined functions.
+
+Commands:
+    retrieve-latest-backup-time : Retrieves latest restorable timestamp for the given sql container
+                                  in given region.
+
+To search AI knowledge base for examples, use: az find "az cosmosdb sql"
+

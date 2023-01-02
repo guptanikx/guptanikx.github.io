@@ -1,0 +1,24 @@
+{
+    "reservations": [
+        {
+            "instances": [
+                {
+                    "state": "running"
+                },
+                {
+                    "state": "stopped"
+                }
+            ]
+        },
+        {
+            "instances": [
+                {
+                    "state": "terminated"
+                },
+                {
+                    "state": "running"
+                }
+            ]
+        }
+    ]
+}

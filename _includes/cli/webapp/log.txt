@@ -1,0 +1,12 @@
+
+    Group
+        az webapp log : Manage web app logs.
+
+    Subgroups:
+        deployment : Manage web app deployment logs.
+
+    Commands:
+        config     : Configure logging for a web app.
+        download   : Download a web app's log history as a zip file.
+        show       : Get the details of a web app's logging configuration.
+        tail       : Start live log tracing for a web app.

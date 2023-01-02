@@ -1,0 +1,23 @@
+title: DevIgnite Knowledgebase
+name: devignite.co.in
+description: A Knowledgebase on many technologies I work with
+
+permalinks: pretty
+plugins:
+  - jekyll-seo-tag
+
+git_url: https://github.com/guptanikx
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+# compress_html:
+#   clippings: all
+#   comments: all
+#   endings: all
+#   startings: []
+#   blanklines: false
+#   profile: false

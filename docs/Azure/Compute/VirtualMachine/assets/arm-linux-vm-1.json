@@ -1,0 +1,149 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"vm-index": {
+			"type": "string"
+		},
+		"vnet-name": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"vm01Name": "[concat('lab104-lb-vm-0', parameters('vm-index'))]",
+		"nsg01": "[concat(variables('vm01Name'),'-nsg')]",
+		"vnet01": "[concat(parameters('vnet-name'))]",
+		"nic01": "[concat(variables('vm01Name'),'-nic')]",
+		"ip01": "[concat(variables('vm01Name'),'-ip')]"
+	},
+	"resources": [{
+		"name": "[variables('ip01')]",
+		"type": "Microsoft.Network/publicIPAddresses",
+		"apiVersion": "2019-11-01",
+		"location": "[resourceGroup().location]",
+		"tags": {
+			"displayName": "PublicIPAddress"
+		},
+		"properties": {
+			"publicIPAllocationMethod": "Dynamic",
+			"dnsSettings": {
+				"domainNameLabel": "[toLower(variables('vm01Name'))]"
+			}
+		}
+	}, {
+		"name": "[variables('nsg01')]",
+		"type": "Microsoft.Network/networkSecurityGroups",
+		"apiVersion": "2018-08-01",
+		"location": "[resourceGroup().location]",
+		"properties": {
+			"securityRules": [{
+				"name": "rule-remote",
+				"properties": {
+					"description": "description",
+					"protocol": "Tcp",
+					"sourcePortRange": "*",
+					"destinationPortRange": "22",
+					"sourceAddressPrefix": "*",
+					"destinationAddressPrefix": "*",
+					"access": "Allow",
+					"priority": 100,
+					"direction": "Inbound"
+				}
+			}]
+		}
+	}, {
+		"name": "[variables('vnet01')]",
+		"type": "Microsoft.Network/virtualNetworks",
+		"apiVersion": "2019-11-01",
+		"location": "[resourceGroup().location]",
+		"dependsOn": ["[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsg01'))]"],
+		"tags": {
+			"displayName": "[variables('vnet01')]"
+		},
+		"properties": {
+			"addressSpace": {
+				"addressPrefixes": ["10.0.0.0/16"]
+			},
+			"subnets": [{
+				"name": "subnet-01",
+				"properties": {
+					"addressPrefix": "10.0.0.0/24",
+					"networkSecurityGroup": {
+						"id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsg01'))]"
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "[variables('nic01')]",
+		"type": "Microsoft.Network/networkInterfaces",
+		"apiVersion": "2019-11-01",
+		"location": "[resourceGroup().location]",
+		"dependsOn": ["[resourceId('Microsoft.Network/publicIPAddresses', variables('ip01'))]", "[resourceId('Microsoft.Network/virtualNetworks', variables('vnet01'))]"],
+		"tags": {
+			"displayName": "[variables('nic01')]"
+		},
+		"properties": {
+			"ipConfigurations": [{
+				"name": "ipConfig1",
+				"properties": {
+					"privateIPAllocationMethod": "Dynamic",
+					"publicIPAddress": {
+						"id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('ip01'))]"
+					},
+					"subnet": {
+						"id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet01'), 'subnet-01')]"
+					}
+				}
+			}]
+		}
+	}, {
+		"name": "[variables('vm01Name')]",
+		"type": "Microsoft.Compute/virtualMachines",
+		"apiVersion": "2019-07-01",
+		"location": "[resourceGroup().location]",
+		"dependsOn": ["[resourceId('Microsoft.Network/networkInterfaces', variables('nic01'))]"],
+		"tags": {
+			"displayName": "[variables('vm01Name')]"
+		},
+		"properties": {
+			"hardwareProfile": {
+				"vmSize": "Standard_B1s"
+			},
+			"osProfile": {
+				"computerName": "[variables('vm01Name')]",
+				"adminUsername": "nikx",
+				"adminPassword": "Password@123"
+			},
+			"storageProfile": {
+				"imageReference": {
+					"publisher": "Canonical",
+					"offer": "UbuntuServer",
+					"sku": "19.10-DAILY",
+					"version": "latest"
+				},
+				"osDisk": {
+					"name": "[concat('vmdisk-0',parameters('vm-index'))]",
+					"caching": "ReadWrite",
+					"createOption": "FromImage"
+				}
+			},
+			"networkProfile": {
+				"networkInterfaces": [{
+					"id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nic01'))]"
+				}]
+			},
+			"diagnosticsProfile": {
+				"bootDiagnostics": {
+					"enabled": false
+				}
+			}
+		}
+	}],
+	"outputs": {
+		"siteUri": {
+			"type": "object",
+			"value": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vm01Name')))]"
+		}
+	}
+}

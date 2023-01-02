@@ -1,0 +1,6 @@
+{% capture string_with_newlines %}
+    {% if include.type == "build" %}
+        docker build -t {{ include.name }} 
+    {% endif %}
+{% endcapture %}
+    {{- string_with_newlines | strip | strip_newlines -}}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" class="dark-theme">
+{% include head.html %}
+
+{% assign page_array = "" | split: ',' %}
+{% for p in site.html_pages %}
+{% assign page_array = page_array | push: p.url %}
+{% endfor %}
+{% assign pagecsv = page_array | join: "," %}
+
+<body>
+    <!--start wrapper-->
+    <div class="wrapper">
+        <!--start top header-->
+        <header class="top-header">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <div class="container-lg" style="position: relative;">
+                        <input id="search-input" class="form-control" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <div id="search-results" class="search-results container-fluid">
+                        </div>
+                    </div>
+                </div>
+        </header>
+
+        <!--start sidebar -->
+        <aside class="sidebar-wrapper" data-simplebar="true">
+            <div class="sidebar-header">
+                <div>
+                    <img src="/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+                </div>
+                <div>
+                    <h4 class="logo-text">DevIgnite</h4>
+                </div>
+                <div class="toggle-icon ms-auto"> <i class="bi bi-list"></i>
+                </div>
+            </div>
+            <!--navigation-->
+            <ul class="metismenu" id="menu">
+                <li><a href="/">Home</a></li>
+            </ul>
+            <!--end navigation-->
+        </aside>
+        <!--end sidebar -->
+        <!--Main Content -->
+        <main class="page-content">
+            {{ content }}
+        </main>
+        <!--Main Content -->
+        <a href="javaScript:;" class="back-to-top" style="display: inline;"><i class="bx bxs-up-arrow-alt"></i></a>
+    </div>
+
+    <!-- Bootstrap bundle JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <!--plugins-->
+    <script src="/assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="/assets/plugins/smooth-scrollbar/smooth-scrollbar.js"></script>
+    <script src="/assets/js/pace.min.js"></script>
+    <!--app-->
+    <script src="/assets/js/app.js"></script>
+    <script type="text/javascript">
+        var p = "{{ pagecsv }}";
+    </script>
+    <script src="/assets/js/menu.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.2/dist/index.bundle.min.js"></script> -->
+    <script src="/assets/js/lunr.min.js"></script>
+    <script src="/assets/js/search.js"></script>
+    <script src="/assets/js/custom.js"></script>
+</body>
+
+
+</html>

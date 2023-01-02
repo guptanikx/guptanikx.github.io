@@ -1,0 +1,116 @@
+h1,
+.h1 {
+    font-size: 16px;
+}
+
+h2,
+.h2 {
+    font-size: 16px;
+    opacity: 90%;
+}
+
+h3,
+.h3 {
+    font-size: 16px;
+    opacity: 90%;
+}
+
+h4,
+.h4 {
+    font-size: 15px;
+    opacity: 80%;
+}
+
+h5,
+.h5 {
+    font-size: 14px;
+    opacity: 80%;
+}
+
+h6,
+.h6 {
+    font-size: 14px;
+    opacity: 80%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #bb86fc;
+}
+
+.page-content ul>li {
+    margin: 0.25rem;
+    padding-top: 0.25rem;
+}
+
+.page-content .toc ul>li {
+    margin: unset;
+    padding-top: unset
+}
+
+.alert {
+    margin-bottom: 0.5rem;
+}
+
+code {
+    color: #7dd582
+}
+
+code.answer {
+    color: #e6ea8b
+}
+
+body {
+    opacity: 90%;
+}
+
+.page-content .toc a[href$='content'],
+.page-content .toc h1 a[href$='content'],
+.page-content a[target='_blank']  {
+    color: #6898df;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#jmes_input,
+#jmes_src,
+#jmes_dest {
+    font-family: Consolas, Monaco, Menlo, 'Courier New', monospace;
+    font-size: 14px;
+}
+
+img {
+    cursor: pointer;
+}
+
+.page-content .exam h1 a {
+    color: #bb86fc;
+}
+
+.page-content .exam p {
+    text-align: justify;
+    text-justify: auto;
+}
+
+.page-content .exam code {
+    font-size: 14px;
+}
+
+.page-content .exam ul {
+    margin-top: 3px;
+}
+
+.page-content .exam ul li {
+    margin-bottom: 3px;
+}
+
+.page-content .exam {
+    font-family: Consolas, Monaco, Menlo, 'Courier New', monospace;
+}
+
+/* .page-content .toc {
+    font-family: 'Roboto'
+} */
